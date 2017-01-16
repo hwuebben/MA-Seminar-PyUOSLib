@@ -1,0 +1,20 @@
+{
+    "inputlist":["argIn"],
+    "modules":
+    [
+        {
+            "ID":"TargetFunction",
+            "path":"Benchmark",
+            "collection":"TargetFunction",
+            "module":"Tan",
+            "shift":0.5,
+            "level":0.5,
+            "scale":-1.0,
+            "freq":3.14,
+            "input":
+            {
+                "x":"argIn"
+            }
+        }
+    ]
+}

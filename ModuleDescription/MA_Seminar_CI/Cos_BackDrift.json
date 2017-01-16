@@ -1,0 +1,27 @@
+{
+    "inputlist":["argIn"],
+    "modules":
+    [
+        {
+            "ID":"CosFreq",
+            "path":"Benchmark",
+            "module":"SignalBuilder",
+            "segments":[
+                {"duration":1000, "kind":"constant", "value":3.14},
+                {"duration":1000, "kind":"linear", "start":6.28, "final":3.14},
+                {"duration":1000, "kind":"constant", "value":3.14}
+            ]
+        },
+        {
+            "ID":"TargetFunction",
+            "path":"Benchmark",
+            "collection":"TargetFunction",
+            "module":"Cosine",
+            "input":
+            {
+                "x":"argIn",
+                "freq":"CosFreq"
+            }
+        }
+    ]
+}

@@ -1,0 +1,75 @@
+{
+    "ID":"LearnNonstationaryCos",
+    "module":"ModularExperiment",
+    "nrD":500,
+    "rSeed":12345,
+    "modules":[
+        {
+            "ID":"DataProviderX",
+            "collection":"Distribution",
+            "module":"uniform",
+            "domain":[-1,1],
+            "size":[1]
+        },
+        {
+            "ID":"DataProviderY",
+            "module":"Group",
+            "input":
+            {
+                "argIn":"DataProviderX"
+            },
+            "modules":[
+                {
+                    "ID":"CosFreq",
+                    "path":"Benchmark",
+                    "module":"SignalBuilder",
+                    "segments":[
+                        {"duration":4000, "kind":"constant", "value":3.14},
+                        {"duration":400, "kind":"linear",   "start":3.14,"final":6.28},
+                        {"duration":400, "kind":"constant", "value":6.28}
+                    ]
+                },
+                {
+                    "ID":"TargetFunction",
+                    "path":"Benchmark",
+                    "collection":"TargetFunction",
+                    "module":"cosine",
+                    "input":
+                    {
+                        "x":"argIn",
+                        "freq":"CosFreq"
+                    }
+                }
+            ]
+        },
+        {
+            "ID":"LearnSys",
+            "path":"IncrementalLearning",
+            "collection":"IncrementalLearningSystem",
+            "module":"LayeredLinearSimplicialBSpline",
+            "delta":0.1,
+            "res":2,
+            "offset":-1,
+            "input":
+            {
+                "xLearn":"DataProviderX",
+                "yLearn":"DataProviderY"
+            }
+        },
+        {
+            "ID":"LearningHistory",
+            "collection":"Plotting",
+            "module":"plotLearningHistory",
+            "samplingDomain":[-1,1],
+            "samplingSize":101,
+            "legend":"Training Data",
+            "input":
+            {
+                "xLearn":"DataProviderX",
+                "yLearn":"DataProviderY",
+                "ILS":"LearnSys",
+                "GroundTruth":"DataProviderY"
+            }
+        }
+    ]
+}

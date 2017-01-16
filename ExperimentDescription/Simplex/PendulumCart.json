@@ -1,0 +1,34 @@
+{
+    "ID":"PendulumCart",
+    "nrD":1000,
+    "rSeed":12345,
+    "modules":[
+        {
+            "path":"CartWithInvertedPendulum",
+            "ID":"KeyAndPlot",
+            "module":"SliderAndPlot",
+            "input":
+            {
+                "argIn":"Balance"
+            }
+        },
+        {
+            "path":"CartWithInvertedPendulum",
+            "ID":"PT1Sim",
+            "module":"LinearSim",
+            "input":
+            {
+                "argIn":"KeyAndPlot"
+            }
+        },
+        {
+            "path":"CartWithInvertedPendulum",
+            "ID":"Balance",
+            "module":"CartWithInvertedPendulum",
+            "input":
+            {
+                "argIn":"PT1Sim"
+            }
+        }
+    ]
+}

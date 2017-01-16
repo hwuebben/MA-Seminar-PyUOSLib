@@ -1,0 +1,28 @@
+{
+    "inputlist":["argIn"],
+    "modules":
+    [
+        {
+            "ID":"Shift",
+            "path":"Benchmark",
+            "module":"SignalBuilder",
+            "segments":[
+                {"duration":300, "kind":"constant", "value":1.0},
+                {"duration":300, "kind":"constant", "value":0.5}
+            ]
+        },
+        {
+            "ID":"TargetFunction",
+            "path":"Benchmark",
+            "collection":"TargetFunction",
+            "module":"Linear",
+            "offset":0.0,
+            "scale":1.0,
+            "input":
+            {
+                "x":"argIn",
+                "scale":"Shift"
+            }
+        }
+    ]
+}

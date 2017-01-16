@@ -1,0 +1,19 @@
+{
+    "inputlist":["argIn"],
+    "modules":
+    [
+        {
+            "ID":"TargetFunction",
+            "path":"Benchmark",
+            "collection":"TargetFunction",
+            "module":"Parabola",
+            "shift":0.5,
+            "level":0.5,
+            "scale":-1.0,
+            "input":
+            {
+                "x":"argIn"
+            }
+        }
+    ]
+}

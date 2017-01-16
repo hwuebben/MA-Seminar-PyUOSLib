@@ -1,0 +1,12 @@
+{
+    "inputlist":["argIn"],
+    "modules":
+    [
+        {
+            "ID":"Control",
+            "collection":"Basic",
+            "module":"Constant",
+            "value":0.0
+        }
+    ]
+}

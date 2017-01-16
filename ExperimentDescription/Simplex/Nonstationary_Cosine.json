@@ -1,0 +1,21 @@
+[
+    {
+        "name":"CosFreq",
+        "kind":"SignalBuilder",
+        "segments":[
+            {"duration":400, "kind":"constant", "value":3.14},
+            {"duration":200, "kind":"linear",   "start":3.14,"final":6.28},
+            {"duration":600, "kind":"constant", "value":6.28}
+        ]
+    },
+    {
+        "name":"TargetFunction",
+        "collection":"TargetFunction",
+        "kind":"cosine",
+        "input":
+        {
+            "argIn":"argIn",
+            "freq":"CosFreq"
+        }
+    }
+]

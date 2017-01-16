@@ -1,0 +1,80 @@
+{
+    "ID":"BasicPendulumSwingUp",
+    "module":"ModularExperiment",
+    "nrD":3200,
+    "rSeed":12345,
+    "parameter":
+        {
+            "Tmax":5.0,
+            "nrLayer":4,
+            "offset":1,
+            "res":2
+        },
+    "modules":[
+        {
+            "ID":"Test",
+            "collection":"Iterator",
+            "module":"ModuleFilesInFolder"
+        },
+        {
+            "ID":"Target",
+            "path":"Benchmark",
+            "module":"SignalBuilder",
+            "segments":[
+                {"duration":400, "kind":"constant", "value":5.0},
+                {"duration":400, "kind":"constant", "value":-5.0},
+                {"duration":400, "kind":"constant", "value":5.0},
+                {"duration":800, "kind":"linear", "start":5.0, "final":-5.0},
+                {"duration":400, "kind":"constant", "value":-5.0},
+                {"duration":800, "kind":"halfcosine", "start":-5.0, "final":5.0}
+            ],
+            "value":10.0
+        },
+        {
+            "ID":"Sim",
+            "path":"Benchmark",
+            "collection":"DynamicProcess",
+            "module":"SISOSin",
+            "state":0.0,
+            "dt":0.02,
+            "input":
+            {
+                "argIn":"Control"
+            }
+        },
+        {
+            "ID":"StateError",
+            "collection":"Basic",
+            "module":"Summation",
+            "input":
+            {
+                "x1":"Sim",
+                "x2":"Target"
+            }
+        },
+        {
+            "ID":"Control",
+            "path":"Control",
+            "collection":"SISO",
+            "module":"FeedbackLinSin",
+            "a_m":1.0,
+            "c":1.0,
+            "maxI":1.0,
+            "input":
+            {
+                "state":"Sim",
+                "target":"Target"
+            }
+        },
+        {
+            "ID":"Plot",
+            "collection":"Plotting",
+            "module":"PlotVsTime",
+            "input":
+            {
+                "state":"Sim",
+                "ref":"Target"
+            }
+        }
+    ]
+}

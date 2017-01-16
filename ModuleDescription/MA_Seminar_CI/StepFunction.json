@@ -1,0 +1,17 @@
+{
+    "inputlist":["argIn"],
+    "modules":
+    [
+        {
+            "ID":"TargetFunction",
+            "path":"Benchmark",
+            "collection":"TargetFunction",
+            "module":"Step",
+            "threshold":0.5,
+            "input":
+            {
+                "x":"argIn"
+            }
+        }
+    ]
+}

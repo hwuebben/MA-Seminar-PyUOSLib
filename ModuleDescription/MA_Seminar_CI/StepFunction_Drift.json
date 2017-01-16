@@ -1,0 +1,28 @@
+{
+    "inputlist":["argIn"],
+    "modules":
+    [
+        {
+            "ID":"StepThreshold",
+            "path":"Benchmark",
+            "module":"SignalBuilder",
+            "segments":[
+                {"duration":300, "kind":"constant", "value":0.8},
+                {"duration":400, "kind":"linear", "start":0.8,"final":0.4},
+                {"duration":300, "kind":"constant", "value":0.4}
+            ]
+        },
+        {
+            "ID":"TargetFunction",
+            "path":"Benchmark",
+            "collection":"TargetFunction",
+            "module":"Step",
+            "threshold":0.5,
+            "input":
+            {
+                "x":"argIn",
+                "threshold":"StepThreshold"
+            }
+        }
+    ]
+}

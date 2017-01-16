@@ -1,0 +1,19 @@
+{
+    "inputlist":["argIn"],
+    "modules":
+    [
+        {
+            "ID":"TargetFunction",
+            "path":"Benchmark",
+            "collection":"TargetFunction",
+            "module":"Kink",
+            "level":0.0,
+            "shift":0.5,
+            "slope":1.0,
+            "input":
+            {
+                "x":"argIn"
+            }
+        }
+    ]
+}

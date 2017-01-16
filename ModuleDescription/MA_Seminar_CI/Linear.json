@@ -1,0 +1,18 @@
+{
+    "inputlist":["argIn"],
+    "modules":
+    [
+        {
+            "ID":"TargetFunction",
+            "path":"Benchmark",
+            "collection":"TargetFunction",
+            "module":"Linear",
+            "offset":0.0,
+            "scale":1.0,
+            "input":
+            {
+                "x":"argIn"
+            }
+        }
+    ]
+}
